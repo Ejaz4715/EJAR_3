@@ -16,12 +16,15 @@ public class NHCWebApplication {
     public final AddPropertyPage addPropertyPage;
     public final RegistrationPage registrationPage;
 
+    public final ChangeLessorAndLessorRepresentativePage changeLessorAndLessorRepresentativePage;
+
     public NHCWebApplication() {
         loginPage = new LoginPage();
         addResidentialContractPage = new AddResidentialContractPage();
         rechargeWalletPage = new RechargeWalletPage();
         addPropertyPage = new AddPropertyPage();
         registrationPage = new RegistrationPage();
+        changeLessorAndLessorRepresentativePage = new ChangeLessorAndLessorRepresentativePage();
 
 
     }
