@@ -44,6 +44,12 @@ public class ChangeLessorAndLessorRepresentativePageObject {
                 put("ar", "//a[contains(text(),'تغيير ممثل المؤجر')]");
             }});
 
+            put("Change-Lessor-List-Option", new HashMap<>() {{
+                put("en", "//a[contains(text(),'تغيير المؤجر/المالك')]");
+                put("ar", "//a[contains(text(),'تغيير المؤجر/المالك')]");
+            }});
+
+
             put("Add-Lessor-Representative-Option", new HashMap<>() {{
                 put("en", "//a[contains(text(),'إضافة ممثل المؤجر')]");
                 put("ar", "//a[contains(text(),'إضافة ممثل المؤجر')]");
@@ -164,6 +170,135 @@ public class ChangeLessorAndLessorRepresentativePageObject {
                 put("ar", "//button[contains(text(),'التالي')]");
             }});
 
+            put("button-add-ownership-document", new HashMap<>() {{
+                put("en", "//a[contains(text(),' Add Ownership document ')]");
+                put("ar", "//a[contains(text(),'إضافة وثيقة ملكية')]");
+            }});
+
+            put("dropdown-ownership-document-type", new HashMap<>() {{
+                put("en", "//select[@data-name=\"ownership_document_type\"]");
+                put("ar", "//select[@data-name=\"ownership_document_type\"]");
+            }});
+
+            put("text-issued-date", new HashMap<>() {{
+                put("en", "//input[@data-name=\"issued_date\"]");
+                put("ar", "//input[@data-name=\"issued_date\"]");
+            }});
+
+            put("text-document-number", new HashMap<>() {{
+                put("en", "//input[@data-name=\"document_number\"]");
+                put("ar", "//input[@data-name=\"document_number\"]");
+            }});
+
+            put("Change-Successfully-Msg", new HashMap<>() {{
+                put("en", "");
+                put("ar", "//h2[contains(text(),'تم تغيير المؤجر/ممثل المؤجر بنجاح')]");
+            }});
+
+            put("Confirm-Request", new HashMap<>() {{
+                put("en", "");
+                put("ar", "//button[contains(text(),'تأكيد الموافقة على الطلب')]");
+            }});
+
+            put("Agree-CheckBox", new HashMap<>() {{
+                put("en", "");
+                put("ar", "//app-form-checkbox[contains(@class,'agree border')]");
+            }});
+
+            put("Change-Lessor-Title", new HashMap<>() {{
+                put("en", "");
+                put("ar", "//h1[contains(text(),'طلب تغيير المؤجر')]");
+            }});
+
+            put("Accept-Request", new HashMap<>() {{
+                put("en", "");
+                put("ar", "//a[contains(text(),'الموافقة على طلب التغيير')]");
+            }});
+
+            put("Request-Menu", new HashMap<>() {{
+                put("en", "");
+                put("ar", "//span[@class='round-icon large menu']");
+            }});
+
+            put("Reference-Input", new HashMap<>() {{
+                put("en", "");
+                put("ar", "//input[@formcontrolname='reference']");
+            }});
+
+            put("Request-Filter-Button", new HashMap<>() {{
+                put("en", "");
+                put("ar", "//span[@class='icon filter-icon']");
+            }});
+
+            put("View-Request", new HashMap<>() {{
+                put("en", "");
+                put("ar", "//span[contains(text(),'عرض الطلبات')]");
+            }});
+
+            put("Request-Tab", new HashMap<>() {{
+                put("en", "");
+                put("ar", "//a[contains(text(),'الطلبات')]");
+            }});
+
+            put("Get-Request-Number", new HashMap<>() {{
+                put("en", "");
+                put("ar", "//p[@class='info-value']");
+            }});
+
+            put("Request-Tab", new HashMap<>() {{
+                put("en", "");
+                put("ar", "//a[contains(text(),'الطلبات')]");
+            }});
+
+            put("Get-Request-Number", new HashMap<>() {{
+                put("en", "");
+                put("ar", "//p[@class='info-value']");
+            }});
+
+            put("Send-Button", new HashMap<>() {{
+                put("en", "");
+                put("ar", "//button[contains(text(),'إرسال')]");
+            }});
+
+            put("Get-Name-Of-New-Lessor-From-OwnerShip", new HashMap<>() {{
+                put("en", "");
+                put("ar", "//p[@class='mb-1']");
+            }});
+
+            put("Get-New-OwnerShip-Name", new HashMap<>() {{
+                put("en", "");
+                put("ar", "(//p[@class='info-value empty'])[6]");
+            }});
+
+            put("Change-Lessor-Header-Txt", new HashMap<>() {{
+                put("en", "");
+                put("ar", "//h1[contains(text(),'طلب تغيير المالك')]");
+            }});
+
+            put("Old-OwnerShip-Name-Txt", new HashMap<>() {{
+                put("en", "");
+                put("ar", "//h2[contains(text(),'وثيقة ملكية قديمة')]");
+            }});
+
+            put("OwnerShipNameTxt", new HashMap<>() {{
+                put("en", "");
+                put("ar", "(//h5[@class='item-value'])[1]");
+            }});
+
+            put("OTP-input", new HashMap<>(){{
+                put ("en", "//input[@data-name=\"index_1\"]");
+                put ("ar", "//input[@data-name=\"index_1\"]");
+            }});
+
+            put("verify-identity-btn", new HashMap<>(){{
+                put ("en", "//input[@data-name=\"index_1\"]");
+                put ("ar", "//button[contains(text(),'التحقق من الهوية')]");
+            }});
+
+            put("approval-submitted-text", new HashMap<>(){{
+                put ("en", "//h2[text()]");
+                put ("ar", "//h2[text()]");
+            }});
         }};
 
     public static String get(String locator) throws Exception {
@@ -196,6 +331,10 @@ public class ChangeLessorAndLessorRepresentativePageObject {
 
     public static By changeLessorRepresentativeOption() throws Exception {
         return By.xpath(get("Change-Lessor-Representative-List-Option"));
+    }
+
+    public static By changeLessorOption() throws Exception {
+        return By.xpath(get("Change-Lessor-List-Option"));
     }
 
     public static By addLessorRepresentativeOption() throws Exception {
@@ -296,5 +435,98 @@ public class ChangeLessorAndLessorRepresentativePageObject {
 
     public static By changeCurrentLessorRepresentative() throws Exception {
         return By.xpath(get("Change-Current-Lessor-Representative"));
+    }
+
+    public static By getButtonAddOwnershipDocument() throws Exception {
+        return By.xpath(get("button-add-ownership-document"));
+    }
+    public static By getDropdownOwnershipDocumentType() throws Exception {
+        return By.xpath(get("dropdown-ownership-document-type"));
+    }
+
+    public static By getTextIssuedDate() throws Exception {
+        return By.xpath(get("text-issued-date"));
+    }
+
+    public static By getTextDocumentNumber() throws Exception {
+        return By.xpath(get("text-document-number"));
+    }
+
+    public static By ownerShipNameTxt () throws Exception {
+            return By.xpath(get("OwnerShip-Name-Txt"));
+        }
+
+    public static By oldOwnerShipNameTxt() throws Exception {
+        return By.xpath(get("Old-OwnerShip-Name-Txt"));
+    }
+
+    public static By changeLessorHeaderTxt() throws Exception {
+        return By.xpath(get("Change-Lessor-Header-Txt"));
+    }
+
+    public static By getNewOwnerShipName() throws Exception {
+        return By.xpath(get("Get-New-OwnerShip-Name"));
+    }
+
+    public static By getNameOfNewLessorFromOwnerShip() throws Exception {
+        return By.xpath(get("Get-Name-Of-New-Lessor-From-OwnerShip"));
+    }
+
+    public static By sendButton() throws Exception {
+        return By.xpath(get("Send-Button"));
+    }
+
+    public static By getRequestNumber() throws Exception {
+        return By.xpath(get("Get-Request-Number"));
+    }
+
+    public static By requestTab() throws Exception {
+        return By.xpath(get("Request-Tab"));
+    }
+
+    public static By requestFilterButton() throws Exception {
+        return By.xpath(get("Request-Filter-Button"));
+    }
+
+    public static By viewRequest() throws Exception {
+        return By.xpath(get("View-Request"));
+    }
+
+    public static By referenceInput() throws Exception {
+        return By.xpath(get("Reference-Input"));
+    }
+
+    public static By requestMenu () throws Exception {
+        return By.xpath(get("Request-Menu"));
+    }
+
+    public static By acceptRequest() throws Exception {
+        return By.xpath(get("Accept-Request"));
+    }
+
+    public static By changeLessorTitle () throws Exception {
+        return By.xpath(get("Change-Lessor-Title"));
+    }
+
+    public static By agreeCheckBox () throws Exception {
+        return By.xpath(get("Agree-CheckBox"));
+    }
+
+    public static By ConfirmRequest() throws Exception {
+        return By.xpath(get("Confirm-Request"));
+    }
+
+    public static By changeSuccessfullyMsg () throws Exception {
+        return By.xpath(get("Change-Successfully-Msg"));
+    }
+
+    public static By OTPButton() throws Exception{
+        return By.xpath(get("OTP-input"));
+    }
+    public static By verifyIdentityBTN() throws Exception{
+        return By.xpath(get("verify-identity-btn"));
+    }
+    public static By approvalSubmittedText() throws Exception{
+        return By.xpath(get("approval-submitted-text"));
     }
 }

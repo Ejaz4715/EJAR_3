@@ -21,6 +21,7 @@ public class LoginPage extends WebBasePage {
         logger.info("Enter Email as " + email);
         Browser.setText(LoginPageObjects.setTextEmail(), email);
         logger.addScreenshot("Entered Username successfully");
+
     }
 
     public void enterBORegistrationPassword(Map<String, String> data) throws Exception {
