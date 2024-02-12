@@ -18,7 +18,7 @@ public class LoginPage extends WebBasePage {
 
     // Page actions
     public void enterUsername(String email) throws Exception {
-        logger.info("Enter Email as " + email);
+        logger.info("Enter Username as " + email);
         Browser.setText(LoginPageObjects.setTextEmail(), email);
         logger.addScreenshot("Entered Username successfully");
 

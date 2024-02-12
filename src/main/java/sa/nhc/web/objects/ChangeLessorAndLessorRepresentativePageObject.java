@@ -39,7 +39,12 @@ public class ChangeLessorAndLessorRepresentativePageObject {
                 put("ar", "//span[@class='round-icon large menu']");
             }});
 
-            put("Change-Lessor-Representative-List-Option", new HashMap<>() {{
+            put("Owners-Property", new HashMap<>() {{
+
+                put("ar", "//div[text()=' ملّاك العقار ']");
+            }});
+
+            put("Change-Lessor-Representative-List", new HashMap<>() {{
                 put("en", "//a[contains(text(),'تغيير ممثل المؤجر')]");
                 put("ar", "//a[contains(text(),'تغيير ممثل المؤجر')]");
             }});
@@ -51,21 +56,23 @@ public class ChangeLessorAndLessorRepresentativePageObject {
 
 
             put("Add-Lessor-Representative-Option", new HashMap<>() {{
-                put("en", "//a[contains(text(),'إضافة ممثل المؤجر')]");
-                put("ar", "//a[contains(text(),'إضافة ممثل المؤجر')]");
+                put("ar", "//label[contains(text(),' إضافة ممثل المؤجر الجديد ')]");
+            }});
+            put("Update-Lessor-Representative-Option", new HashMap<>() {{
+                put("ar", "//label[contains(text(),' تعديل ممثل المؤجر الحالي ')]");
             }});
 
+
+            put("Delete-Lessor-Representative-Option", new HashMap<>() {{
+                put("en", "");
+                put("ar", "//label[contains(text(),'إزالة ممثل المؤجر الحالي')]");
+            }});
             put("Delete-Lessor-Representative-Button", new HashMap<>() {{
                 put("en", "");
                 put("ar", "//button[contains(text(),'إزالة الممثل')]");
             }});
 
-            put("Delete-Current-Lessor-Representative", new HashMap<>() {{
-                put("en", "");
-                put("ar", "//label[contains(text(),'إزالة ممثل المؤجر الحالي')]");
-            }});
-
-            put("Add Lessor-Representative-Legal-Document", new HashMap<>() {{
+            put("Add-Lessor-Representative-Legal-Document", new HashMap<>() {{
                 put("en", "");
                 put("ar", "//a[contains(text(),'إضافة وثيقة قانونية جديدة')]");
             }});
@@ -77,7 +84,7 @@ public class ChangeLessorAndLessorRepresentativePageObject {
 
             put("Select-Document-Type", new HashMap<>() {{
                 put("en", "");
-                put("ar", "//select[@name='document_type']");
+                put("ar", "//select[@data-name=\"document_type\"]");
             }});
 
             put("Legal-Document-Name-Input", new HashMap<>() {{
@@ -97,12 +104,12 @@ public class ChangeLessorAndLessorRepresentativePageObject {
 
             put("Legal-Document-Start-Issue-Date", new HashMap<>() {{
                 put("en", "");
-                put("ar", "//app-form-field[@data-name='issued_date']//div[@class='date-picker-button']");
+                put("ar", "((//div//input[@class='form-control ng-dirty ng-valid ng-touched touched'])/following-sibling::div)[1]");
             }});
 
             put("Legal-Document-End-Date", new HashMap<>() {{
                 put("en", "");
-                put("ar", "//app-form-field[@data-name='expiry_date']//div[@class='date-picker-button']");
+                put("ar", "(//div[@class='date-picker-button active'])[2]");
             }});
 
             put("Legal-Document-Issue-Place", new HashMap<>() {{
@@ -120,7 +127,7 @@ public class ChangeLessorAndLessorRepresentativePageObject {
                 put("ar", "//label[contains(text(),'هوية وطنية')]");
             }});
 
-            put("National-ID-Input\n", new HashMap<>() {{
+            put("National-ID-Input", new HashMap<>() {{
                 put("en", "");
                 put("ar", "//div//input[@formcontrolname='id_number']");
             }});
@@ -145,14 +152,19 @@ public class ChangeLessorAndLessorRepresentativePageObject {
                 put("ar", "//a[contains(text(),'عرض وثيقة الملكية')]");
             }});
 
-            put("Confirm-Button", new HashMap<>() {{
-                put("en", "");
-                put("ar", "//button[contains(text(),'تأكيد')]");
-            }});
+
 
             put("Confirm-Change-Button", new HashMap<>() {{
                 put("en", "");
                 put("ar", "//button[contains(text(),'تأكيد التغيير')]");
+            }});
+            put("Confirm-Button", new HashMap<>() {{
+                put("en", "");
+                put("ar", "//button[text()=' تأكيد ']");
+            }});
+            put("Close-Button", new HashMap<>() {{
+                put("en", "");
+                put("ar", "//button[text()=' إغلاق ']");
             }});
 
             put("Upload-File-Button", new HashMap<>() {{
@@ -164,11 +176,40 @@ public class ChangeLessorAndLessorRepresentativePageObject {
                 put("en", "");
                 put("ar", "//p[@class='info-label mt-4']");
             }});
+            put("Alert-Message-Update-Lessor-Representative", new HashMap<>() {{
+                put("en", "");
+                put("ar", "//app-card-body[contains(text(),'تغيير ممثل المؤجر')]");
+            }});
 
             put("Next-Button", new HashMap<>() {{
                 put("en", "");
                 put("ar", "//button[contains(text(),'التالي')]");
             }});
+            put("Next-BTN", new HashMap<>() {{
+                put("en", "");
+                put("ar", "//app-update-representative-steps//button[@class='btn btn-primary'][contains(text(),'التالي')]");
+            }});
+            put("Next-BTNR", new HashMap<>() {{
+                put("en", "");
+                put("ar", "//app-remove-representative-steps//button[@class='btn btn-primary'][contains(text(),'التالي')]");
+            }});
+
+
+            put("Add-Button", new HashMap<>() {{
+                put("en", "");
+                put("ar", "//button[text()=' إضافة ']");
+            }});
+
+            put("Request-Number-Message", new HashMap<>() {{
+                put("en", "");
+                put("ar", "//app-card-body/div/p[contains(text(),'تم ارسال الطلب')]");
+            }});
+
+            put("Send-Approval-Message", new HashMap<>() {{
+                put("en", "");
+                put("ar", "//app-card-body/div/p/following-sibling::div");
+            }});
+
 
             put("button-add-ownership-document", new HashMap<>() {{
                 put("en", "//a[contains(text(),' Add Ownership document ')]");
@@ -209,6 +250,10 @@ public class ChangeLessorAndLessorRepresentativePageObject {
                 put("en", "");
                 put("ar", "//h1[contains(text(),'طلب تغيير المؤجر')]");
             }});
+            put("Change-Lessor-Representative-Title", new HashMap<>() {{
+                put("en", "");
+                put("ar", "//h1[contains(text(),'طلب تعديل ممثل المؤجر الحالي')]");
+            }});
 
             put("Accept-Request", new HashMap<>() {{
                 put("en", "");
@@ -242,7 +287,7 @@ public class ChangeLessorAndLessorRepresentativePageObject {
 
             put("Get-Request-Number", new HashMap<>() {{
                 put("en", "");
-                put("ar", "//p[@class='info-value']");
+                put("ar", "//img[@src=\"/assets/icons/graphic-icons/change-request-submitted.svg\"]/following-sibling::p[@class='info-value']");
             }});
 
             put("Request-Tab", new HashMap<>() {{
@@ -252,7 +297,7 @@ public class ChangeLessorAndLessorRepresentativePageObject {
 
             put("Get-Request-Number", new HashMap<>() {{
                 put("en", "");
-                put("ar", "//p[@class='info-value']");
+                put("ar", "//img[@src=\"/assets/icons/graphic-icons/change-request-submitted.svg\"]/following-sibling::p[@class='info-value']");
             }});
 
             put("Send-Button", new HashMap<>() {{
@@ -340,9 +385,20 @@ public class ChangeLessorAndLessorRepresentativePageObject {
     public static By addLessorRepresentativeOption() throws Exception {
         return By.xpath(get("add-Lessor-Representative-Option"));
     }
+    public static By updateLessorRepresentativeOption() throws Exception {
+        return By.xpath(get("Update-Lessor-Representative-Option"));
+    }
+
 
     public static By nextButton() throws Exception {
         return By.xpath(get("Next-Button"));
+    }
+    public static By nextBTN() throws Exception {
+        return By.xpath(get("Next-BTN"));
+    }
+
+    public static By nextBTNR() throws Exception {
+        return By.xpath(get("Next-BTNR"));
     }
 
     public static By alertMessage() throws Exception {
@@ -382,11 +438,11 @@ public class ChangeLessorAndLessorRepresentativePageObject {
     }
 
     public static By deleteCurrentLessorRepresentativeButton() throws Exception {
-        return By.xpath(get("Delete-Current-Lessor-Representative"));
+        return By.xpath(get("Delete-Lessor-Representative-Option"));
     }
 
     public static By addLessorRepresentativeLegalDocument() throws Exception {
-        return By.xpath(get("Add Lessor-Representative-Legal-Document"));
+        return By.xpath(get("Add-Lessor-Representative-Legal-Document"));
     }
 
     public static By selectDocumentType () throws Exception {
@@ -434,7 +490,7 @@ public class ChangeLessorAndLessorRepresentativePageObject {
     }
 
     public static By changeCurrentLessorRepresentative() throws Exception {
-        return By.xpath(get("Change-Current-Lessor-Representative"));
+        return By.xpath(get("Change-Lessor-Representative-List"));
     }
 
     public static By getButtonAddOwnershipDocument() throws Exception {
@@ -453,7 +509,7 @@ public class ChangeLessorAndLessorRepresentativePageObject {
     }
 
     public static By ownerShipNameTxt () throws Exception {
-            return By.xpath(get("OwnerShip-Name-Txt"));
+            return By.xpath(get("OwnerShipNameTxt"));
         }
 
     public static By oldOwnerShipNameTxt() throws Exception {
@@ -507,6 +563,9 @@ public class ChangeLessorAndLessorRepresentativePageObject {
     public static By changeLessorTitle () throws Exception {
         return By.xpath(get("Change-Lessor-Title"));
     }
+    public static By changeLessorRepresentativeTitle () throws Exception {
+        return By.xpath(get("Change-Lessor-Representative-Title"));
+    }
 
     public static By agreeCheckBox () throws Exception {
         return By.xpath(get("Agree-CheckBox"));
@@ -529,4 +588,23 @@ public class ChangeLessorAndLessorRepresentativePageObject {
     public static By approvalSubmittedText() throws Exception{
         return By.xpath(get("approval-submitted-text"));
     }
+    public static By addButton() throws Exception {
+        return By.xpath(get("Add-Button"));
+    }
+    public static By requestNumberMessage() throws Exception {
+        return By.xpath(get("Request-Number-Message"));
+    }
+
+
+    public static By alertMessageUpdateLessorRepresentative() throws Exception {
+        return By.xpath(get("Alert-Message-Update-Lessor-Representative"));
+    }
+
+    public static By sendApprovalMessage() throws Exception {
+        return By.xpath(get("Send-Approval-Message"));
+    }
+    public static By ownersProperty() throws Exception {
+        return By.xpath(get("Owners-Property"));
+    }
+
 }
