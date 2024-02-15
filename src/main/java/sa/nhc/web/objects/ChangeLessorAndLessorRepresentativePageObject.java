@@ -45,7 +45,7 @@ public class ChangeLessorAndLessorRepresentativePageObject {
             }});
 
             put("Change-Lessor-Representative-List", new HashMap<>() {{
-                put("en", "//a[contains(text(),'تغيير ممثل المؤجر')]");
+                put("en", "");
                 put("ar", "//a[contains(text(),'تغيير ممثل المؤجر')]");
             }});
 
@@ -58,6 +58,7 @@ public class ChangeLessorAndLessorRepresentativePageObject {
             put("Add-Lessor-Representative-Option", new HashMap<>() {{
                 put("ar", "//label[contains(text(),' إضافة ممثل المؤجر الجديد ')]");
             }});
+
             put("Update-Lessor-Representative-Option", new HashMap<>() {{
                 put("ar", "//label[contains(text(),' تعديل ممثل المؤجر الحالي ')]");
             }});
@@ -75,6 +76,11 @@ public class ChangeLessorAndLessorRepresentativePageObject {
             put("Add-Lessor-Representative-Legal-Document", new HashMap<>() {{
                 put("en", "");
                 put("ar", "//a[contains(text(),'إضافة وثيقة قانونية جديدة')]");
+            }});
+
+            put("Add-Lessor-Representative-Legal-Representation-Document", new HashMap<>() {{
+                put("en", "");
+                put("ar", "//a[contains(text(),' إضافة وثيقة تمثيل نظامي جديدة')]");
             }});
 
             put("Delete-Lessor-Representative-Message", new HashMap<>() {{
@@ -179,6 +185,11 @@ public class ChangeLessorAndLessorRepresentativePageObject {
             put("Alert-Message-Update-Lessor-Representative", new HashMap<>() {{
                 put("en", "");
                 put("ar", "//app-card-body[contains(text(),'تغيير ممثل المؤجر')]");
+            }});
+
+            put("Alert-Message-Add-Lessor-Representative", new HashMap<>() {{
+                put("en", "");
+                put("ar", "//p[text()='']");
             }});
 
             put("Next-Button", new HashMap<>() {{
@@ -344,6 +355,22 @@ public class ChangeLessorAndLessorRepresentativePageObject {
                 put ("en", "//h2[text()]");
                 put ("ar", "//h2[text()]");
             }});
+
+            put("change-lessor-rep-option", new HashMap<>(){{
+                put ("en", "");
+                put ("ar", "//a[text()=' تغيير ممثل المؤجر ']");
+            }});
+
+            put("add-new-lessor-rep-radio-btn", new HashMap<>(){{
+                put ("en", "");
+                put ("ar", "//label[text()=' إضافة ممثل المؤجر الجديد ']");
+            }});
+            put("national-id-radio-btn", new HashMap<>(){{
+                put ("en", "");
+                put ("ar", "//label[text()=' هوية وطنية ']");
+            }});
+
+
         }};
 
     public static String get(String locator) throws Exception {
@@ -443,6 +470,10 @@ public class ChangeLessorAndLessorRepresentativePageObject {
 
     public static By addLessorRepresentativeLegalDocument() throws Exception {
         return By.xpath(get("Add-Lessor-Representative-Legal-Document"));
+    }
+
+    public static By addLessorRepresentativeLegalRepresentationDocument() throws Exception {
+        return By.xpath(get("Add-Lessor-Representative-Legal-Representation-Document"));
     }
 
     public static By selectDocumentType () throws Exception {
@@ -600,11 +631,28 @@ public class ChangeLessorAndLessorRepresentativePageObject {
         return By.xpath(get("Alert-Message-Update-Lessor-Representative"));
     }
 
+    public static By alertMessageAddLessorRepresentative() throws Exception {
+        return By.xpath(get("Alert-Message-Add-Lessor-Representative"));
+    }
+
     public static By sendApprovalMessage() throws Exception {
         return By.xpath(get("Send-Approval-Message"));
     }
     public static By ownersProperty() throws Exception {
         return By.xpath(get("Owners-Property"));
     }
+
+    public static By changeLessorRepOption() throws Exception {
+        return By.xpath(get("change-lessor-rep-option"));
+    }
+
+    public static By addNewLessorRadioBTN() throws Exception {
+        return By.xpath(get("add-new-lessor-rep-radio-btn"));
+    }
+
+    public static By nationalIDRadioBTN() throws Exception {
+        return By.xpath(get("national-id-radio-btn"));
+    }
+
 
 }

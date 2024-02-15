@@ -3,23 +3,28 @@ package sa.nhc.web.pages;
 
 import com.testcrew.manager.TestDataManager;
 import com.testcrew.web.Browser;
-import org.checkerframework.checker.units.qual.C;
-import org.checkerframework.checker.units.qual.PolyUnit;
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.text.PDFTextStripper;
 import org.openqa.selenium.By;
-import org.openxmlformats.schemas.officeDocument.x2006.sharedTypes.STTrueFalse;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.ITestContext;
 import sa.nhc.web.objects.AddPropertyPageObjects;
 import sa.nhc.web.objects.ChangeLessorAndLessorRepresentativePageObject;
-import sa.nhc.web.objects.LoginPageObjects;
 
 import java.awt.*;
 import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyEvent;
+import java.io.BufferedInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.Map;
 
 import static com.testcrew.api.UnirestAPI.logger;
+import static com.testcrew.web.Browser.driver;
 
 public class ChangeLessorAndLessorRepresentativePage {
 
@@ -337,7 +342,7 @@ public class ChangeLessorAndLessorRepresentativePage {
     }
 
     public void navigateToRequestsPageForUpdateLessorRepresentative(Map<String, String> data) throws Exception {
-        data.putAll(TestDataManager.readDependantGlobalTestData("ChangeLessorRepresentative"));
+        data.putAll(TestDataManager.readDependantGlobalTestData("AddNewLessorRepresentative"));
 
         Browser.waitForSeconds(5);
         if (Browser.isElementPresent(ChangeLessorAndLessorRepresentativePageObject.closeButton())) {
@@ -353,10 +358,11 @@ public class ChangeLessorAndLessorRepresentativePage {
         Browser.waitForSeconds(1);
         Browser.click(ChangeLessorAndLessorRepresentativePageObject.requestFilterButton());
         Browser.waitForSeconds(2);
-        Browser.setText(ChangeLessorAndLessorRepresentativePageObject.referenceInput(),data.get("RequestNumber"));
+        Browser.setText(ChangeLessorAndLessorRepresentativePageObject.referenceInput(),data.get("RequestNumberForAddLessorRep"));
         Browser.waitForSeconds(2);
         logger.addScreenshot("");
         Browser.waitForSeconds(1);
+        Browser.waitUntilVisibilityOfElement(ChangeLessorAndLessorRepresentativePageObject.requestMenu(), 20);
         Browser.click(ChangeLessorAndLessorRepresentativePageObject.requestMenu());
         Browser.waitForSeconds(1);
         Browser.click(ChangeLessorAndLessorRepresentativePageObject.acceptRequest());
@@ -364,8 +370,69 @@ public class ChangeLessorAndLessorRepresentativePage {
         logger.addScreenshot("");
         Browser.waitForSeconds(1);
         Browser.click(ChangeLessorAndLessorRepresentativePageObject.nextButton());
-        Browser.waitUntilVisibilityOfElement(ChangeLessorAndLessorRepresentativePageObject.changeLessorRepresentativeTitle(), 20);
+//        Browser.waitUntilVisibilityOfElement(ChangeLessorAndLessorRepresentativePageObject.changeLessorRepresentativeTitle(), 20);
+        Browser.waitForSeconds(5);
+        Browser.executeJSScroll(600);
+        Browser.waitForSeconds(3);
+        Browser.click(ChangeLessorAndLessorRepresentativePageObject.nextButton());
+        Browser.waitForSeconds(2);
+        logger.addScreenshot("");
+        Browser.waitForSeconds(25);
+        Browser.waitUntilPresenceOfElement(ChangeLessorAndLessorRepresentativePageObject.confirmButton(), 30);
+        Browser.waitForSeconds(2);
+        Browser.executeJSScroll(600);
+        Browser.waitForSeconds(2);
+        logger.addScreenshot("");
         Browser.waitForSeconds(1);
+        Browser.click(ChangeLessorAndLessorRepresentativePageObject.confirmButton());
+        Browser.waitForSeconds(2);
+        Browser.click(ChangeLessorAndLessorRepresentativePageObject.nextButton());
+        Browser.waitForSeconds(2);
+        logger.addScreenshot("");
+        Browser.waitForSeconds(1);
+        Browser.click(ChangeLessorAndLessorRepresentativePageObject.nextButton());
+        Browser.waitForSeconds(2);
+        logger.addScreenshot("");
+        Browser.waitForSeconds(1);
+        Browser.click(ChangeLessorAndLessorRepresentativePageObject.agreeCheckBox());
+        Browser.waitForSeconds(1);
+        Browser.click(ChangeLessorAndLessorRepresentativePageObject.ConfirmRequest());
+        Browser.waitForSeconds(2);
+        logger.addScreenshot("");
+        Browser.waitForSeconds(3);
+    }
+
+    public void navigateToRequestsPageForAddLessorRepresentative(Map<String, String> data) throws Exception {
+        data.putAll(TestDataManager.readDependantGlobalTestData("AddNewLessorRepresentative"));
+
+        Browser.waitForSeconds(5);
+        if (Browser.isElementPresent(ChangeLessorAndLessorRepresentativePageObject.closeButton())) {
+            Browser.waitForSeconds(3);
+            Browser.click(ChangeLessorAndLessorRepresentativePageObject.closeButton());
+        }
+        Browser.waitForSeconds(2);
+        Browser.click(ChangeLessorAndLessorRepresentativePageObject.requestTab());
+        Browser.waitForSeconds(2);
+        Browser.click(ChangeLessorAndLessorRepresentativePageObject.viewRequest());
+        Browser.waitForSeconds(2);
+        logger.addScreenshot("");
+        Browser.waitForSeconds(1);
+        Browser.click(ChangeLessorAndLessorRepresentativePageObject.requestFilterButton());
+        Browser.waitForSeconds(2);
+        Browser.setText(ChangeLessorAndLessorRepresentativePageObject.referenceInput(),data.get("RequestNumberForAddLessorRep"));
+        Browser.waitForSeconds(2);
+        logger.addScreenshot("");
+        Browser.waitForSeconds(1);
+        Browser.waitUntilVisibilityOfElement(ChangeLessorAndLessorRepresentativePageObject.requestMenu(), 20);
+        Browser.click(ChangeLessorAndLessorRepresentativePageObject.requestMenu());
+        Browser.waitForSeconds(1);
+        Browser.click(ChangeLessorAndLessorRepresentativePageObject.acceptRequest());
+        Browser.waitForSeconds(2);
+        logger.addScreenshot("");
+        Browser.waitForSeconds(1);
+        Browser.click(ChangeLessorAndLessorRepresentativePageObject.nextButton());
+//        Browser.waitUntilVisibilityOfElement(ChangeLessorAndLessorRepresentativePageObject.changeLessorRepresentativeTitle(), 20);
+        Browser.waitForSeconds(5);
         Browser.executeJSScroll(600);
         Browser.waitForSeconds(3);
         Browser.click(ChangeLessorAndLessorRepresentativePageObject.nextButton());
@@ -403,11 +470,16 @@ public class ChangeLessorAndLessorRepresentativePage {
         Browser.waitForSeconds(1);
         logger.addScreenshot("Confirm Message : " + SuccessfullyMsg);
     }
+    public void assertLessorRepresentativeAdded() throws Exception {
+        Browser.waitForSeconds(2);
+        String SuccessfullyMsg = Browser.getWebElement(ChangeLessorAndLessorRepresentativePageObject.changeSuccessfullyMsg()).getText();
+        Assert.assertTrue(SuccessfullyMsg.contains("تم تغيير المؤجر/ممثل المؤجر بنجاح"));
+        Browser.waitForSeconds(1);
+        logger.addScreenshot("Confirm Message : " + SuccessfullyMsg);
+    }
 
 
-    ///////////////////////////////////////////
-
-    public void AddNewLessorRepresentativeToOwnerShipDocument() throws Exception {
+    public void assertAlertMessage() throws Exception {
         Browser.click(ChangeLessorAndLessorRepresentativePageObject.addLessorRepresentativeOption());
         Browser.waitForSeconds(2);
         Browser.click(ChangeLessorAndLessorRepresentativePageObject.nextButton());
@@ -465,7 +537,7 @@ public class ChangeLessorAndLessorRepresentativePage {
 
     public void addLessorRepresentativeLegalDocument() throws Exception {
         Browser.waitForSeconds(2);
-        Browser.click(ChangeLessorAndLessorRepresentativePageObject.addLessorRepresentativeLegalDocument());
+        Browser.click(ChangeLessorAndLessorRepresentativePageObject.addLessorRepresentativeLegalRepresentationDocument());
         Browser.waitForSeconds(2);
         Browser.waitUntilVisibilityOfElement(ChangeLessorAndLessorRepresentativePageObject.selectDocumentType(),30);
         Browser.selectDropdownByVisibleText(ChangeLessorAndLessorRepresentativePageObject.selectDocumentType(), "أخرى");
@@ -576,5 +648,128 @@ public class ChangeLessorAndLessorRepresentativePage {
         Browser.waitForSeconds(2);
         logger.addScreenshot("");
         Browser.waitForSeconds(15);
+    }
+
+    public void navigateToChangeLessorRepPage() throws Exception {
+
+        Browser.waitForSeconds(2);
+        Browser.click(ChangeLessorAndLessorRepresentativePageObject.ownerShipDocumentListAction());
+        Browser.waitForSeconds(3);
+        WebElement element = Browser.getWebElement(ChangeLessorAndLessorRepresentativePageObject.changeLessorRepOption());
+//        Browser.click(ChangeLessorAndLessorRepresentativePageObject.changeLessorOption());
+        element.click();
+        Browser.waitForSeconds(1);
+    }
+
+    public void addNewLessorRep(Map<String, String>data) throws Exception {
+        Browser.waitForSeconds(2);
+        Browser.click(ChangeLessorAndLessorRepresentativePageObject.addNewLessorRadioBTN());
+        Browser.waitForSeconds(2);
+        Browser.click(ChangeLessorAndLessorRepresentativePageObject.nextButton());
+        logger.addScreenshot("");
+        Browser.waitForSeconds(1);
+        Browser.click(ChangeLessorAndLessorRepresentativePageObject.nextButton());
+        Browser.waitForSeconds(2);
+        Browser.waitUntilPresenceOfElement(ChangeLessorAndLessorRepresentativePageObject.nationalIDRadioBTN(), 20);
+        Browser.click(ChangeLessorAndLessorRepresentativePageObject.nationalIDRadioBTN());
+        Browser.waitForSeconds(1);
+        Browser.setText(AddPropertyPageObjects.getTextNationalIdNumber(), data.get("LessorRepID"));
+        Browser.setText(AddPropertyPageObjects.getTextDateOfBirth(), data.get("LessorRepDOB"));
+        Browser.waitForSeconds(2);
+        Browser.click(ChangeLessorAndLessorRepresentativePageObject.nextButton());
+
+//        WebElement element = Browser.getWebElement(ChangeLessorAndLessorRepresentativePageObject.addLessorRepresentativeOption());
+////        Browser.click(ChangeLessorAndLessorRepresentativePageObject.changeLessorOption());
+//        element.click();
+//        Browser.waitForSeconds(1);
+    }
+
+    public void assertNewLessorRepAddedPopUpAndGetRequestNumber() throws Exception {
+
+        Browser.waitForSeconds(2);
+        Browser.click(ChangeLessorAndLessorRepresentativePageObject.confirmChangeButton());
+        Browser.waitForSeconds(2);
+        Browser.waitUntilVisibilityOfElement(ChangeLessorAndLessorRepresentativePageObject.alertMessageUpdateLessorRepresentative(), 30);
+        Browser.waitForSeconds(2);
+        Browser.click(ChangeLessorAndLessorRepresentativePageObject.confirmButton());
+
+        //get request number from pop up message
+        Browser.waitForSeconds(3);
+        Browser.waitUntilVisibilityOfElement(ChangeLessorAndLessorRepresentativePageObject.getRequestNumber(), 30);
+        String RequestNumber = Browser.getWebElement(ChangeLessorAndLessorRepresentativePageObject.getRequestNumber()).getText().substring(20, 28);
+        TestDataManager.addDependantGlobalTestData("AddNewLessorRepresentative", "RequestNumberForAddLessorRep", RequestNumber);
+        TestDataManager.writeDependantGlobalTestData("AddNewLessorRepresentative");
+
+//        logger.addScreenshot("");
+//        Browser.waitForSeconds(1);
+//        Browser.click(ChangeLessorAndLessorRepresentativePageObject.closeButton());
+//        Browser.waitForSeconds(2);
+//        Browser.waitUntilVisibilityOfElement(ChangeLessorAndLessorRepresentativePageObject.alertMessageAddLessorRepresentative(), 30);
+//        Browser.waitForSeconds(2);
+//        String AlertUpdateLessorRep = Browser.getWebElement(ChangeLessorAndLessorRepresentativePageObject.alertMessageAddLessorRepresentative()).getText();
+//        System.out.println(AlertUpdateLessorRep);
+////        Assert.assertTrue(AlertUpdateLessorRep.contains("تمت إضافة ممثل المؤجر الجديد"));
+//        Browser.waitForSeconds(2);
+
+
+        logger.addScreenshot("New Lessor Representative has been added with approval pending from Lessor Representative");
+        Browser.click(ChangeLessorAndLessorRepresentativePageObject.closeButton());
+        Browser.waitForSeconds(1);
+    }
+
+    public void enterOwnerShipDocumentInContractSearchInputField(String DN) throws Exception {
+        Browser.waitForSeconds(3);
+        Browser.waitUntilVisibilityOfElement(By.xpath("//input[@formcontrolname='ownership_reference_no']"),30);
+        Browser.setText(By.xpath("//input[@formcontrolname='ownership_reference_no']"), DN);
+        Browser.waitForSeconds(2);
+        logger.addScreenshot("");
+    }
+
+    public void navigateToContractPageDetails(int Index){
+        Browser.waitForSeconds(2);
+        Browser.click(By.xpath("(//app-round-icon//span[@class='round-icon large menu'])["+Index+"]"));
+        Browser.waitForSeconds(2);
+        Browser.waitUntilVisibilityOfElement(By.xpath("//a[contains(text(),'عرض العقد')]"),20);
+        Browser.click(By.xpath("//a[contains(text(),'عرض العقد')]"));
+        Browser.waitForSeconds(10);
+        if(Browser.isElementPresent(By.xpath("(//button[@class='btn btn-primary position-relative'])[1]"))){
+            Browser.click(By.xpath("(//button[@class='btn btn-primary position-relative'])[1]"));
+        }
+        Browser.waitForSeconds(15);
+    }
+
+    public void PDFValidation(String ContractNumber ,String Message) throws IOException {
+        //Open the downloaded PDF file and verify its contents
+        String home = System.getProperty("user.home");
+        String path = "file:///" + home + "\\Downloads\\" + ContractNumber + ".pdf";
+        System.out.println(path);
+        URL url = new URL(path);
+        //Create Input Stream Object to save the Stream of pdf file using OpenStream
+        InputStream iStream = url.openStream();
+        //Create Buffered Input Stream object to pass InputStream class object reference
+        BufferedInputStream bfStream = new BufferedInputStream(iStream);
+        // Create a PDF document object.
+        PDDocument document = PDDocument.load(bfStream);
+        // Get the first page of the document.
+        //PDPage doc = document.getPage(0);
+        // Create a PDFTextStripper object.
+        PDFTextStripper stripper = new PDFTextStripper();
+        // Strip the text from the page.
+        int chr = stripper.getText(document).indexOf("Contract No.");
+        String contactVersion = stripper.getText(document).substring(chr,chr+31);
+        System.out.println(contactVersion);
+        logger.addScreenshot("");
+        // Validate the text.
+        Assert.assertTrue(contactVersion.contains(Message));//Contract No. 10341891107 / 1-10
+    }
+
+    public void closeChildWindow(){
+        ArrayList<String> switchTabs= new ArrayList<String> (driver.getWindowHandles());
+        driver.switchTo().window(switchTabs.get(1));
+        driver.close();
+        driver.switchTo().window(switchTabs.get(0));
+        Browser.waitForSeconds(2);
+        driver.navigate().back();
+        Browser.waitForSeconds(6);
     }
 }
