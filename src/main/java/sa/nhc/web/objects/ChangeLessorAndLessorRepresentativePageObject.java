@@ -186,6 +186,14 @@ public class ChangeLessorAndLessorRepresentativePageObject {
                 put("en", "");
                 put("ar", "//app-card-body[contains(text(),'تغيير ممثل المؤجر')]");
             }});
+            put("Alert-Message-Delete-Lessor-Representative", new HashMap<>() {{
+                put("en", "");
+                put("ar", "//h2[contains(text(),'إزالة ممثل المؤجر الحالي')]");
+            }});
+            put("Message-Delete-Lessor-Representative", new HashMap<>() {{
+                put("en", "");
+                put("ar", "//div[@class=\"subtitle\"]");
+            }});
 
             put("Alert-Message-Add-Lessor-Representative", new HashMap<>() {{
                 put("en", "");
@@ -369,7 +377,14 @@ public class ChangeLessorAndLessorRepresentativePageObject {
                 put ("en", "");
                 put ("ar", "//label[text()=' هوية وطنية ']");
             }});
+            put("lessor-rep", new HashMap<>(){{
 
+                put ("ar", "//app-card-body[@class=\"card-body\"]/div/div/app-round-icon");
+            }});
+            put("no-lessor-rep", new HashMap<>(){{
+
+                put ("ar", "//p[@class='info-label mt-4 with-breaks']");
+            }});
 
         }};
 
@@ -630,6 +645,12 @@ public class ChangeLessorAndLessorRepresentativePageObject {
     public static By alertMessageUpdateLessorRepresentative() throws Exception {
         return By.xpath(get("Alert-Message-Update-Lessor-Representative"));
     }
+    public static By alertMessageDeleteLessorRepresentative() throws Exception {
+        return By.xpath(get("Alert-Message-Delete-Lessor-Representative"));
+    }
+    public static By messageDeleteLessorRepresentative() throws Exception {
+        return By.xpath(get("Message-Delete-Lessor-Representative"));
+    }
 
     public static By alertMessageAddLessorRepresentative() throws Exception {
         return By.xpath(get("Alert-Message-Add-Lessor-Representative"));
@@ -640,6 +661,12 @@ public class ChangeLessorAndLessorRepresentativePageObject {
     }
     public static By ownersProperty() throws Exception {
         return By.xpath(get("Owners-Property"));
+    }
+    public static By lessorRep() throws Exception {
+        return By.xpath(get("lessor-rep"));
+    }
+    public static By noLessorRep() throws Exception {
+        return By.xpath(get("no-lessor-rep"));
     }
 
     public static By changeLessorRepOption() throws Exception {
