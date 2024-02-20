@@ -104,14 +104,58 @@ public class ChangeLessorAndLessorRepresentative extends NHCWebTest {
     }
 
 
-    @Test(dataProvider = "testDataProvider")
+    @Test(dataProvider = "testDataProvider", priority = 1, testName = "TC_10_WEB Verify Delete The Lessor Representative With Not Exist",
+            description = "Verify Delete The Lessor Representative With Not Exist")
+    public void VerifyDeleteLessorRepresentativeWithNotExist(Map<String, String> data) throws Exception {
+        logger.info("Step 00: Test Data : " + data.toString());
+        app.openApplication(data);
+        app.loginPage.changeUILanguage("ar");
+        app.loginPage.assertLoginPageDisplayed();
+        logger.info("Step 01: Login to Application Enter Email, Enter Password, click Login");
+        app.loginPage.enterUsername(data.get("Username"));
+        app.loginPage.enterPassword(data.get("Password"));
+        app.loginPage.clickLogin();
+        app.loginPage.enterVerificationCode();
+        app.loginPage.closeExploreEjarPopUp();
+        logger.info("Step 02: Navigate to OwnerShip Document Page");
+        app.changeLessorAndLessorRepresentativePage.neviagteToOwnerShipDocumentPage();
+        logger.info("Step 03: Search for OwnerShip Document");
+        app.changeLessorAndLessorRepresentativePage.searchForOwnershipDocument(data);
+        app.changeLessorAndLessorRepresentativePage.deleteNoLessorRepresentative();
+
+    }
+
+
+    @Test(dataProvider = "testDataProvider", priority = 1, testName = "TC_11_WEB Verify Delete The Lessor Representative With More Than Owner",
+            description = "Verify Delete The Lessor Representative With More Than Owner")
+    public void VerifyDeleteLessorRepresentativeWithMoreThanOwner(Map<String, String> data) throws Exception {
+        logger.info("Step 00: Test Data : " + data.toString());
+        app.openApplication(data);
+        app.loginPage.changeUILanguage("ar");
+        app.loginPage.assertLoginPageDisplayed();
+        logger.info("Step 01: Login to Application Enter Email, Enter Password, click Login");
+        app.loginPage.enterUsername(data.get("Username"));
+        app.loginPage.enterPassword(data.get("Password"));
+        app.loginPage.clickLogin();
+        app.loginPage.enterVerificationCode();
+        app.loginPage.closeExploreEjarPopUp();
+        logger.info("Step 02: Navigate to OwnerShip Document Page");
+        app.changeLessorAndLessorRepresentativePage.neviagteToOwnerShipDocumentPage();
+        logger.info("Step 03: Search for OwnerShip Document");
+        app.changeLessorAndLessorRepresentativePage.searchForOwnershipDocument(data);
+        app.changeLessorAndLessorRepresentativePage.deleteLessorRepresentativeWithMoreThanOwner();
+
+    }
+
+    @Test(dataProvider = "testDataProvider", priority = 1, testName = "TC_07_WEB Verify Delete The Lessor Representative",
+            description = "Verify Delete The Lessor Representative")
     public void VerifyDeleteLessorRepresentative(Map<String, String> data) throws Exception {
         logger.info("Step 00: Test Data : " + data.toString());
         app.openApplication(data);
         app.loginPage.changeUILanguage("ar");
         app.loginPage.assertLoginPageDisplayed();
         logger.info("Step 01: Login to Application Enter Email, Enter Password, click Login");
-        app.loginPage.enterUsername(data.get("UserName"));
+        app.loginPage.enterUsername(data.get("Username"));
         app.loginPage.enterPassword(data.get("Password"));
         app.loginPage.clickLogin();
         app.loginPage.enterVerificationCode();
@@ -121,13 +165,47 @@ public class ChangeLessorAndLessorRepresentative extends NHCWebTest {
         logger.info("Step 03: Search for OwnerShip Document");
         app.changeLessorAndLessorRepresentativePage.searchForOwnershipDocument(data);
         app.changeLessorAndLessorRepresentativePage.deleteLessorRepresentativeToOwnerShipDocument();
+        app.changeLessorAndLessorRepresentativePage.ConfirmDeleteLessorRepresentative();
         app.changeLessorAndLessorRepresentativePage.sendToLessorForApproveTheDeletion();
-//        app.changeLessorAndLessorRepresentativePage.neviagteToOwnerShipDocumentPage();
-//        app.changeLessorAndLessorRepresentativePage.searchForOwnershipDocument(data);
-//        app.changeLessorAndLessorRepresentativePage.assertLessorRepresentativeDeleted();
+
     }
 
+    @Test(dataProvider = "testDataProvider", priority = 1, testName = "TC_08_WEB Verify The Lessor Representative Approve The Delete",
+            description = "Verify The Lessor Representative Approve The Delete")
+    public void VerifyLessorApproveTheDelete(Map<String, String> data) throws Exception {
+        logger.info("Step 00: Test Data : " + data.toString());
+        app.openApplication(data);
+        app.loginPage.changeUILanguage("ar");
+        app.loginPage.assertLoginPageDisplayed();
+        logger.info("Step 01: Login to Application , Enter userName & password, Click Login");
+        app.loginPage.enterUsername(data.get("Username"));
+        app.loginPage.enterPassword(data.get("Password"));
+        app.loginPage.clickLogin();
+        app.loginPage.enterVerificationCode();
+        app.loginPage.closeExploreEjarPopUp();
+        app.changeLessorAndLessorRepresentativePage.navigateToRequestsPageForDeleteLessorRepresentative(data);
+        app.changeLessorAndLessorRepresentativePage.enterOTPForApproval("1234");
+        app.changeLessorAndLessorRepresentativePage.clickVerifyIdentityBTN();
+        app.changeLessorAndLessorRepresentativePage.assertLessorChangeOrLessorRepresentative();
+    }
 
+    @Test(dataProvider = "testDataProvider", priority = 1, testName = "TC_09_WEB Check The Lessor Representative Is Deleted",
+            description = "Check The Lessor Representative Is Deleted")
+    public void CheckLessorRepresentativeIsDeleted(Map<String, String> data) throws Exception {
+        logger.info("Step 00: Test Data : " + data.toString());
+        app.openApplication(data);
+        app.loginPage.changeUILanguage("ar");
+        app.loginPage.assertLoginPageDisplayed();
+        logger.info("Step 01: Login to Application , Enter userName & password, Click Login");
+        app.loginPage.enterUsername(data.get("Username"));
+        app.loginPage.enterPassword(data.get("Password"));
+        app.loginPage.clickLogin();
+        app.loginPage.enterVerificationCode();
+        app.loginPage.closeExploreEjarPopUp();
+        app.changeLessorAndLessorRepresentativePage.neviagteToOwnerShipDocumentPage();
+        app.changeLessorAndLessorRepresentativePage.searchForOwnershipDocument(data);
+        app.changeLessorAndLessorRepresentativePage.checkDeletedLessorRepresentativeDetails();
+    }
 
 
     //-------------------------------------------ChangeLessorWithOneOwnerAndOneRepresentative---------------------------------------
@@ -152,7 +230,7 @@ public class ChangeLessorAndLessorRepresentative extends NHCWebTest {
         app.changeLessorAndLessorRepresentativePage.NeviagteToChangeLessorPage();
         logger.info("Step 04: Change Lessor by add new ownership document");
         app.changeLessorAndLessorRepresentativePage.addOwnerShipDocumentNumber(data);
-        app.changeLessorAndLessorRepresentativePage.addOwnerShipDocumentDetails(context);
+        app.changeLessorAndLessorRepresentativePage.addOwnerShipDocumentDetails(data);
         app.changeLessorAndLessorRepresentativePage.addNewLessorToOwnerShipDocument(data);
         app.changeLessorAndLessorRepresentativePage.getNameOfNewLessor();
         app.changeLessorAndLessorRepresentativePage.sendToLessorForApproved();
@@ -197,6 +275,28 @@ public class ChangeLessorAndLessorRepresentative extends NHCWebTest {
         app.changeLessorAndLessorRepresentativePage.neviagteToOwnerShipDocumentPage();
         app.changeLessorAndLessorRepresentativePage.searchForNewOwnershipDocument(data);
         app.changeLessorAndLessorRepresentativePage.checkNewLessorDetails();
+    }
+
+
+    @Test(dataProvider = "testDataProvider")
+    public void VerifyContractVersionIsUpdated(Map<String, String> data) throws Exception {
+        app.openApplication(data);
+        app.loginPage.changeUILanguage("ar");
+        app.loginPage.assertLoginPageDisplayed();
+        logger.info("Step 01: Login to Application , Enter userName & password, Click Login");
+        app.loginPage.enterUsername(data.get("Username"));
+        app.loginPage.enterPassword(data.get("Password"));
+        app.loginPage.clickLogin();
+        app.loginPage.enterVerificationCode();
+        app.loginPage.closeExploreEjarPopUp();
+        app.addResidentialContractPage.clickContractsBtn();
+        app.addResidentialContractPage.selectViewAllContractsButton();
+        app.addResidentialContractPage.clickFilterBtnOnViewAllContractsPage();
+        app.changeLessorAndLessorRepresentativePage.enterOwnerShipDocumentInContractSearchInputField("1-010111");
+        app.changeLessorAndLessorRepresentativePage.navigateToContractPageDetails(1);
+        app.changeLessorAndLessorRepresentativePage.PDFValidation("10341891107" ,"Contract No. 10341891107 / 1-11");
+        app.changeLessorAndLessorRepresentativePage.closeChildWindow();
+        app.changeLessorAndLessorRepresentativePage.navigateToContractPageDetails(1);
     }
 }
 
